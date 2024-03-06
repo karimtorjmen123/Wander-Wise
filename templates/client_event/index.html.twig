@@ -1,0 +1,32 @@
+{% extends 'client.html.twig' %}
+
+{% block title %}Events{% endblock %}
+
+{% block body %}
+ <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Events</h6>
+                <h1 class="mb-5">Our Events</h1>
+            </div>
+            <div class="row g-4">
+                {% for event in events %}
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h4>{{ event.Nom }}</h4>
+                            <h5>Type: {{ event.Type }}</h5>
+                            <p>Date: {{ event.Date|date('Y-m-d') }}</p>
+                            <p>Address: {{ event.Adresse }}</p>
+                            <p>Sponsor: {{ event.Sponsor.Nom }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Sponsor{% endblock %}
+
+{% block body %}
+    <h1>Sponsor</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sponsor.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sponsor.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Somme</th>
+                <td>{{ sponsor.Somme }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ sponsor.Tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ sponsor.Email }}</td>
+            </tr>
+            <tr>
+                <th>CIN</th>
+                <td>{{ sponsor.CIN }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td><img src="{{ asset('uploads/'~ sponsor.Logo) }}" height=200 alt="logo image"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsor_index') }}">back to list</a>
+
+    <a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}">edit</a>
+
+    {{ include('sponsor/_delete_form.html.twig') }}
+{% endblock %}

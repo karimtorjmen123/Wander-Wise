@@ -1,0 +1,45 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Sponsor index{% endblock %}
+
+{% block body %}
+    <h1>Sponsor index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Somme</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>CIN</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.id }}</td>
+                <td>{{ sponsor.Nom }}</td>
+                <td>{{ sponsor.Somme }}</td>
+                <td>{{ sponsor.Tel }}</td>
+                <td>{{ sponsor.Email }}</td>
+                <td>{{ sponsor.CIN }}</td>
+                <td><img src="{{ asset('uploads/'~ sponsor.Logo) }}" height=70 alt="logo image"></td>
+                <td>
+                    <a href="{{ path('app_sponsor_show', {'id': sponsor.id}) }}">show</a>
+                    <a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsor_new') }}">Create new</a>
+{% endblock %}
